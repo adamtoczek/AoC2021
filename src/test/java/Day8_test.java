@@ -107,7 +107,7 @@ public class Day8_test {
         String[] p = line.split("\\|");
         List<String> d = Arrays.asList(p[0].trim().split(" "));
         List<String> c = Arrays.asList(p[1].trim().split(" "));
-        System.out.println(Digits.decodeNumber(Digits.createMap(d),c));
+        assertEquals(8394, Digits.decodeNumber(Digits.createMap(d),c));
 
     }
 }
