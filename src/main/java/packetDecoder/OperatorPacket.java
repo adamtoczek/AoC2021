@@ -11,7 +11,6 @@ public class OperatorPacket extends Packet{
 
     public OperatorPacket(int version, int type) {
         super(version, type);
-//        System.out.println(version);
     }
 
     @Override
@@ -22,7 +21,6 @@ public class OperatorPacket extends Packet{
             for (int i=0; i < 15 ; i++)
                 s+=code.poll();
             int length = Integer.parseInt(s, 2);
-//            System.out.println(" l: "+length);
             String c="";
             for (int i=0; i< length; i++)
                 c+=code.poll();
@@ -30,14 +28,8 @@ public class OperatorPacket extends Packet{
             while (!nCode.isEmpty()) {
                 Packet p = factory.createPacket(nCode);
                 if (p!=null) {
-                    try {
                         packets.add(p);
                         p.consume(nCode);
-
-                    }
-                    catch (Exception e) {
-                        System.out.println("not added ver "+version);
-                    }
 
                 }
             }
@@ -47,24 +39,17 @@ public class OperatorPacket extends Packet{
             for (int i=0; i < 11 ; i++)
                 s+=code.poll();
             int numberOfPackages = Integer.parseInt(s, 2);
-//            System.out.println(" c: "+numberOfPackages);
             for (int i=0; i<numberOfPackages; i++) {
                 Packet p = factory.createPacket(code);
                 if (p!=null)
                 {
-                    try {
                         packets.add(p);
                         p.consume(code);
-
-                    }
-                    catch (Exception e) {
-                        System.out.println("not added ver "+version);
-                    }
                 }
             }
 
         }
-        System.out.println("size "+packets.size());
+
     }
 
     @Override
@@ -94,7 +79,6 @@ public class OperatorPacket extends Packet{
     }
 
     private long lessThan() {
-        System.out.println("size "+packets.size());
         return (packets.get(0).calclulatePart2() < packets.get(1).calclulatePart2()) ? 1l : 0l;
     }
 

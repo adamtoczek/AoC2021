@@ -3,11 +3,10 @@ package packetDecoder;
 import java.util.Queue;
 
 public class LiteralPacket extends Packet {
-    public int code;
+    public long code;
 
     public LiteralPacket(int version, int type) {
         super(version, type);
-//        System.out.println(version);
     }
 
     @Override
@@ -22,7 +21,7 @@ public class LiteralPacket extends Packet {
             s+=code.poll();
             s+=code.poll();
         }
-        this.code = Integer.parseInt(s, 2);
+        this.code = Long.parseLong(s, 2);
     }
 
     @Override
@@ -35,11 +34,11 @@ public class LiteralPacket extends Packet {
         return code;
     }
 
-    private void _consumeRest(Queue<String> code, int count) {
-
-        int i = 4-((count+6)%4);
-        System.out.println("consume rest "+i);
-        for (int n=0; n<i; n++)
-            code.poll();
-    }
+//    private void _consumeRest(Queue<String> code, int count) {
+//
+//        int i = 4-((count+6)%4);
+//        System.out.println("consume rest "+i);
+//        for (int n=0; n<i; n++)
+//            code.poll();
+//    }
 }

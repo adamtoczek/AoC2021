@@ -1,4 +1,3 @@
-import packetDecoder.PackageFactory;
 import packetDecoder.Packet;
 
 import java.util.*;
@@ -6,7 +5,7 @@ import java.util.*;
 public class PackeDecoder {
     Map<String, String> hex = new HashMap<>();
     Queue<String> code = new ArrayDeque<>();
-    List<Packet> packets = new ArrayList<>();
+    Packet packets;
     public PackeDecoder(List<String> input) {
         hex.put("0", "0000");
         hex.put("1", "0001");
@@ -39,28 +38,16 @@ public class PackeDecoder {
     }
 
     public void decode() {
-        while (!code.isEmpty()) {
-            Packet p = Packet.factory.createPacket(code);
-            if (p!=null) {
-                try {
-                    p.consume(code);
-                    packets.add(p);
-                }
-                catch (Exception e){}
-            }
-        }
-        System.out.println("number of packages top level "+packets.size());
+             packets = Packet.factory.createPacket(code);
+             packets.consume(code);
     }
 
     public int getControlSum() {
-        int sum = 0;
-        for (Packet p : packets)
-            sum+=p.calculate();
-        return sum;
+        return packets.calculate();
     }
 
     public long getPartTwo() {
-        return packets.get(0).calclulatePart2();
+        return packets.calclulatePart2();
 
     }
 }
