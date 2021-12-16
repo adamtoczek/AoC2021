@@ -27,7 +27,6 @@ public class PackeDecoder {
         for (String c : s) {
             _addCode(c);
         }
-        System.out.println(code);
     }
 
     private void _addCode(String c) {
@@ -40,6 +39,7 @@ public class PackeDecoder {
     public void decode() {
              packets = Packet.factory.createPacket(code);
              packets.consume(code);
+//        System.out.println(packets);
     }
 
     public int getControlSum() {

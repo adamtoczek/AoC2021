@@ -34,7 +34,16 @@ public class LiteralPacket extends Packet {
         return code;
     }
 
-//    private void _consumeRest(Queue<String> code, int count) {
+    @Override
+    public String toString() {
+        return "LiteralPacket{" +
+                "code=" + code +
+                ", version=" + version +
+                ", type=" + type +
+                '}';
+    }
+
+    //    private void _consumeRest(Queue<String> code, int count) {
 //
 //        int i = 4-((count+6)%4);
 //        System.out.println("consume rest "+i);

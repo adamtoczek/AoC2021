@@ -62,16 +62,25 @@ public class OperatorPacket extends Packet{
 
     @Override
     public long calclulatePart2() {
+        long val = 0l;
         switch (type) {
-            case 0: return sumPackets();
-            case 1: return mulitplyPackets();
-            case 2: return miniumPacket();
-            case 3: return maximumPacket();
-            case 5: return greaterThan();
-            case 6: return lessThan();
-            case 7: return equalThan();
+            case 0: val = sumPackets();
+            break;
+            case 1: val = mulitplyPackets();
+            break;
+            case 2: val = miniumPacket();
+            break;
+            case 3: val = maximumPacket();
+            break;
+            case 5: val = greaterThan();
+            break;
+            case 6: val = lessThan();
+            break;
+            case 7: val = equalThan();
+            break;
         }
-        return 0;
+//        System.out.println(type+" "+val);
+        return val;
     }
 
     private long equalThan() {
@@ -87,11 +96,13 @@ public class OperatorPacket extends Packet{
     }
 
     private long maximumPacket() {
-        Queue<Long> q = new PriorityQueue<>();
+        long max=0l;
+
         for (Packet p : packets)
-            q.offer(p.calclulatePart2());
-        Object[] b = q.toArray();
-        return Long.parseLong(String.valueOf(b[b.length-1]));
+            if (p.calclulatePart2() > max)
+                max = p.calclulatePart2();
+
+        return max;
     }
 
     private long miniumPacket() {
@@ -114,5 +125,22 @@ public class OperatorPacket extends Packet{
         for (Packet p : packets)
             sum += p.calclulatePart2();
         return sum;
+    }
+
+    @Override
+    public String toString() {
+        String text =
+         "OperatorPacket{" +
+                "lType=" + lType +
+                 ", version=" + version +
+                 ", type=" + type +
+                ", packets=";
+        for (Packet p : packets)
+            text+="\n"+p.toString();
+                text  +=
+
+                '}';
+
+        return text;
     }
 }

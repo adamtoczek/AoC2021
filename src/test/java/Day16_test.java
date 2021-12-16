@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -54,6 +55,57 @@ public class Day16_test {
         PackeDecoder pd = new PackeDecoder(Utils.readFile("day16.txt"));
         pd.decode();
         System.out.println(pd.getPartTwo());
+        assertEquals(819324480368l, pd.getPartTwo());
+    }
+    @Test
+    public void day16_p2_t1 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"9C0141080250320F1802104A08"}));
+        pd.decode();
+        assertEquals(1, pd.getPartTwo());
+    }
+    @Test
+    public void day16_p2_t2 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"9C005AC2F8F0"}));
+        pd.decode();
+        assertEquals(0, pd.getPartTwo());
+    }
+    @Test
+    public void day16_p2_t3 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"F600BC2D8F"}));
+        pd.decode();
+        assertEquals(0, pd.getPartTwo());
+    }
+    @Test
+    public void day16_p2_t4 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"D8005AC2A8F0"}));
+        pd.decode();
+        assertEquals(1, pd.getPartTwo());
+    }
+    @Test
+    public void day16_p2_t5 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"CE00C43D881120"}));
+        pd.decode();
+        assertEquals(9, pd.getPartTwo());
     }
 
+    @Test
+    public void day16_p2_t6 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"880086C3E88112"}));
+        pd.decode();
+        assertEquals(7, pd.getPartTwo());
+    }
+
+    @Test
+    public void day16_p2_t7 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"04005AC33890"}));
+        pd.decode();
+        assertEquals(54, pd.getPartTwo());
+    }
+
+    @Test
+    public void day16_p2_t8 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Arrays.asList(new String[]{"C200B40A82"}));
+        pd.decode();
+        assertEquals(3, pd.getPartTwo());
+    }
 }
