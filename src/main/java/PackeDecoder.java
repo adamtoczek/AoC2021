@@ -49,7 +49,7 @@ public class PackeDecoder {
                 catch (Exception e){}
             }
         }
-
+        System.out.println("number of packages top level "+packets.size());
     }
 
     public int getControlSum() {
@@ -57,5 +57,10 @@ public class PackeDecoder {
         for (Packet p : packets)
             sum+=p.calculate();
         return sum;
+    }
+
+    public long getPartTwo() {
+        return packets.get(0).calclulatePart2();
+
     }
 }

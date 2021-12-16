@@ -24,4 +24,5 @@ public abstract class Packet {
         return code;
     }
 
+    public abstract long calclulatePart2();
 }

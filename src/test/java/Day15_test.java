@@ -34,7 +34,7 @@ public class Day15_test {
 
     @Test
     public void day15_p2() throws IOException {
-        Chiton c = new Chiton(Utils.readFile("day15.txt"));
+        Chiton c = new Chiton(Utils.readFile("day15-q.txt"));
         c.multiplyinput();
         c.drawDistanceMap();
 //        c.drawTable();

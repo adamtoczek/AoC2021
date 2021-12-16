@@ -49,6 +49,11 @@ public class Day16_test {
         System.out.println(pd.getControlSum());
     }
 
-
+    @Test
+    public void day16_p2 () throws IOException {
+        PackeDecoder pd = new PackeDecoder(Utils.readFile("day16.txt"));
+        pd.decode();
+        System.out.println(pd.getPartTwo());
+    }
 
 }

@@ -7,32 +7,32 @@ public class LiteralPacket extends Packet {
 
     public LiteralPacket(int version, int type) {
         super(version, type);
-        System.out.println(version);
+//        System.out.println(version);
     }
 
     @Override
     public void consume(Queue<String> code) {
-        int count = 0;
         boolean done = false;
         String s = "";
         while (!done) {
-            String c = code.poll();
-            if (c.equals("0"))
+            if (code.poll().equals("0"))
                 done = true;
             s+=code.poll();
             s+=code.poll();
             s+=code.poll();
             s+=code.poll();
-            count+=5;
         }
         this.code = Integer.parseInt(s, 2);
-//        _consumeRest(code, count);
-//        System.out.println("\tLiteral Code "+this.code);
     }
 
     @Override
     public int calculate() {
         return version;
+    }
+
+    @Override
+    public long calclulatePart2() {
+        return code;
     }
 
     private void _consumeRest(Queue<String> code, int count) {
