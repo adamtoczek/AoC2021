@@ -28,7 +28,7 @@ public class Day18_test {
     @Test
     public void day18_p1_t2() throws IOException {
         Snailfish s = new Snailfish(Utils.readFile("day18-test.txt"));
-        s.add();
+        s.addAll();
         System.out.println(s.s);
 
         assertEquals(4140, s.calculate());
@@ -62,9 +62,18 @@ public class Day18_test {
     @Test
     public void day18_p1() throws IOException {
         Snailfish s = new Snailfish(Utils.readFile("day18.txt"));
-        s.add();
-
-
+        s.addAll();
         System.out.println(s.calculate());
+    }
+    @Test
+    public void day18_p2_test() throws IOException {
+        Snailfish s = new Snailfish(Utils.readFile("day18-test.txt"));
+        System.out.println(s.calculatePart2());
+    }
+
+    @Test
+    public void day18_p2() throws IOException {
+        Snailfish s = new Snailfish(Utils.readFile("day18.txt"));
+        System.out.println(s.calculatePart2());
     }
 }

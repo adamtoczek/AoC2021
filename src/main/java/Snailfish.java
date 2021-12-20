@@ -5,37 +5,19 @@ import java.util.regex.Pattern;
 public class Snailfish {
     String s;
     Queue<String> input = new ArrayDeque<>();
-//    Map<String, Integer> mapa = new HashMap<>();
+    List<String> in = new ArrayList<>();
 
     public Snailfish(List<String> input) {
-        for (String s : input)
+        for (String s : input) {
             this.input.add(s);
-        s = this.input.poll();
-//        mapa.put("0", 0);
-//        mapa.put("1", 1);
-//        mapa.put("2", 2);
-//        mapa.put("3", 3);
-//        mapa.put("4", 4);
-//        mapa.put("5", 5);
-//        mapa.put("6", 6);
-//        mapa.put("7", 7);
-//        mapa.put("8", 8);
-//        mapa.put("9", 9);
-//        mapa.put("a", 10);
-//        mapa.put("b", 11);
-//        mapa.put("c", 12);
-//        mapa.put("d", 13);
-//        mapa.put("e", 14);
-//        mapa.put("f", 15);
-//        mapa.put("g", 16);
-//        mapa.put("h", 17);
-//        mapa.put("i", 18);
+            this.in.add(s);
+        }
     }
 
-    public void add() {
+    public void addAll() {
+        s = this.input.poll();
         while (!input.isEmpty()) {
             _add(input.poll());
-
             reduceAll();
         }
     }
@@ -259,6 +241,27 @@ public class Snailfish {
 //            System.out.println(s);
 
         }
+    }
+
+    public int calculatePart2(){
+        System.out.println("Input size: "+in.size());
+        int maxSum = 0;
+        for (int i=0; i<in.size(); i++){
+            for (int k=0; k<in.size(); k++) {
+                //skip adding the same snail to itself
+                if (i!=k) {
+                    s=in.get(i);
+                    _add(in.get(k));
+                    reduceAll();
+                    int tmp = calculate();
+                    if (tmp > maxSum)
+                        maxSum = tmp;
+                    System.out.println(i+"\t+ "+k+"\t= "+tmp+"\tmax: "+maxSum);
+                }
+
+            }
+        }
+        return maxSum;
     }
 
 
